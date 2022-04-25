@@ -1,0 +1,36 @@
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('assets/img/hero.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>TravelR</h1>
+                    <span class="subheading"><strong>Capture and Share your Travelling Memories.</strong></span>
+                    <div class="d-flex justify-content-around">
+                        <a class="nav_links nav-link text-white px-lg-3 py-3 py-lg-4" href="/users/register">Register</a>
+                        <a class="nav_links nav-link  text-white px-lg-3 py-3 py-lg-4" href="/users/login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Posts -->
+<div class="container">
+    <h2 class="mx-3">Recent Memories: </h2>
+    <div class="d-flex flex-wrap justify-content-around">
+        <% for(i=0; i<6; i++) { %>
+            <a href="/">
+                <div class="card my-4" style="width: 18rem;">
+                    <img src="assets/img/home-bg.jpg" class="card-img-top px-3 py-3" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+    </div>
+</div>
