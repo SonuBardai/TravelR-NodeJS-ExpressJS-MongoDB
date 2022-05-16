@@ -1,0 +1,91 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
+    body {
+        background-image: url('<%= post.image %>');
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .post {
+        color: white;
+        background: rgba(26, 26, 26, 0.69);
+        padding: 8rem 8rem;
+        margin: 80px 0px;
+    }
+
+    .stamp {
+        width: 18rem;
+        position: absolute;
+        transform: translate(190%, -140%);
+        opacity: 0.65;
+        -webkit-filter: invert(100%);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(invert='1');
+    }
+
+    .author-link,
+    .post-link {
+        color: rgb(181, 185, 57)
+    }
+
+    .author-link:hover,
+    .post-link:hover {
+        color: rgb(230, 202, 41)
+    }
+
+    .travels {
+        margin-top: 5rem;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .title {
+        /* font-size: 1.7rem; */
+        font-family: 'Koulen', cursive;
+        font-weight: 800;
+        color: white;
+    }
+
+    .content {
+        font-size: 1.1rem;
+        color: rgb(180, 180, 180);
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 600;
+        margin: 20px 0px;
+    }
+
+    .author {
+        font-size: 1.8rem;
+        font-family: 'Smooch', cursive;
+        color: rgb(236, 238, 154);
+    }
+</style>
+1
+<div>
+    <div class="container position-relative my-8 px-4 px-lg-5">
+        <div class="post">
+            <h1 class="title">
+                <%= post.title %>
+            </h1>
+            <hr>
+            <img src="assets/post.png" class="stamp">
+            <a href='travels/<%= post.id %>'>
+            </a>
+            <div class="content">
+                <%= post.content %>
+            </div>
+            <div class="author">Post by:
+                <a href="/" class="author-link">
+                    <%= post.author %>
+                </a>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+</div>

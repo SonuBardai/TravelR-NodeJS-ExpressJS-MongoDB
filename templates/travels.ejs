@@ -1,0 +1,93 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
+    body {
+        background-image: url('/assets/img/travels.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .post {
+        color: white;
+        background: rgba(26, 26, 26, 0.69);
+        padding: 8rem 8rem;
+        margin-bottom: 4rem;
+    }
+
+    .stamp {
+        width: 18rem;
+        position: absolute;
+        transform: translate(190%, -140%);
+        opacity: 0.65;
+        -webkit-filter: invert(100%);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(invert='1');
+    }
+
+    .author-link,
+    .post-link {
+        color: rgb(181, 185, 57)
+    }
+
+    .author-link:hover,
+    .post-link:hover {
+        color: rgb(230, 202, 41)
+    }
+
+    .travels {
+        margin-top: 5rem;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .title {
+        font-size: 1.7rem;
+        font-family: 'Koulen', cursive;
+        font-weight: 800;
+        color: white;
+    }
+
+    .content {
+        font-size: 1.1rem;
+        color: rgb(180, 180, 180);
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 600;
+        margin: 20px 0px;
+    }
+
+    .author {
+        font-size: 1.8rem;
+        font-family: 'Smooch', cursive;
+        color: rgb(236, 238, 154);
+    }
+</style>
+
+<div class="container travels">
+    <ul>
+        <% posts=data.map(post=> { %>
+            <div class="post">
+                <hr>
+                <img src="assets/post.png" class="stamp">
+                <a href='travels/<%= post.id %>'>
+                    <div class="title">
+                        <%= post.title %>
+                    </div>
+                </a>
+                <div class="content">
+                    <%= post.content.slice(0, 230) %>
+                        <span>... <a href="/travels/<%= post.id %>" class="post-link">Read More</a></span>
+                </div>
+                <div class="author">Post by:
+                    <a href="/" class="author-link">
+                        <%= post.author %>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            <% }) %>
+    </ul>
+</div>

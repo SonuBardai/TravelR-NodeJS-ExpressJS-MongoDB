@@ -1,5 +1,4 @@
 # TravelR
-
 - A public travelling journal website.
 
 ## Tech Stack:
