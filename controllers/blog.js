@@ -1,7 +1,7 @@
 import Post from "../models/post.js";
 
 export const home = async (req, res) => {
-	const data = await Post.find({}).sort({datePosted: 'desc'}).limit(3)
+	const data = await Post.find({}).sort({ datePosted: "desc" }).limit(3);
 	res.status(200).render("home", { data });
 };
 
@@ -34,6 +34,12 @@ export const newBlog = (req, res) => {
 import User from "../models/user.js";
 
 export const newBlogHandle = async (req, res) => {
+	const { title, content } = req.body;
+	if (!title || !content || !req.file) {
+		req.flash("info", "Please enter all fields to publish post.");
+		res.redirect("/create");
+		return;
+	}
 	const post = new Post({
 		title: req.body.title,
 		content: req.body.content,

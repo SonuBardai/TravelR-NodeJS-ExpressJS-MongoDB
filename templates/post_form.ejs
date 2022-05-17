@@ -33,19 +33,24 @@
     }
 </style>
 <form action="/create" class="container" method="POST" enctype="multipart/form-data">
-    <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="title" class="form-control" id="title" name="title">
-    </div>
-    <div class="mb-3">
-        <label for="content" class="form-label">Content</label>
-        <textarea type="content" class="form-control" id="content" name="content"></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
-        <input type="file" class="form-control" id="image" name="image">
-    </div>
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-secondary submit-btn">Submit</button>
-    </div>
+    <% if( messages.info ) { %>
+        <div class="alert alert-info" role="alert">
+            <%= messages.info %>
+        </div>
+        <% } %>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="title" class="form-control" id="title" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea type="content" class="form-control" id="content" name="content"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-secondary submit-btn">Submit</button>
+            </div>
 </form>

@@ -1,31 +1,57 @@
-<header class="masthead" style="background-image: url('assets/img/login.jpg')">
+<style>
+  body {
+    background-image: url('/assets/img/login.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .login-page {
+    margin: 6rem 13rem;
+    background: rgba(0, 0, 0, 0.307);
+  }
+</style>
+
+<div class="masthead login-page">
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
-          <h1>Login</h1>
+          <h1 class="text-center text-white mt-5">Login</h1>
         </div>
-        <div class="container px-4 px-lg-5">
-          <div class="row gx-4 gx-lg-5 justify-content-center text-white">
-            <hr>
-            <form>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email">
-              </div>
-              <div class="mb-3">
-                <label for="password1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password1" name="password1">
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <div class="my-2">
-                Don't have an Account? 
-                <a href="/users/register" class="text-info">Click here to Register</a>
-              </div>
-            </form>
+        <% if( messages.info ) { %>
+          <div class="alert alert-info" role="alert">
+            <%= messages.info %>
           </div>
-        </div>
+          <% } %>
+            <% if( messages.error ) { %>
+              <div class="alert alert-danger" role="alert">
+                <%= messages.error %>
+              </div>
+              <% } %>
+                <div class="container px-4 px-lg-5">
+                  <div class="row gx-4 gx-lg-5 justify-content-center text-white">
+                    <hr>
+                    <form method="POST" action="/users/login">
+                      <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                      <div class="my-4">
+                        Don't have an Account?
+                        <a href="/users/register" class="text-info">Click here to Register</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
       </div>
     </div>
   </div>
-</header>
+</div>

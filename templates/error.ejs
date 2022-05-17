@@ -1,0 +1,23 @@
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1555861496-0666c8981751?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .error-page {
+        margin: 10rem 0rem;
+        text-align: center;
+        color: white;
+    }
+</style>
+<div class="container error-page">
+    <h1>Oops... Something went wrong!</h1>
+    <% if( messages.error ) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= messages.error %>
+        </div>
+        <% } %>
+            <p>Please try again.</p>
+</div>
