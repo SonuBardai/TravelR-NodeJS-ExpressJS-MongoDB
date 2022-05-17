@@ -1,28 +1,30 @@
 import express from "express";
-import data from "../static/data.js";
+
+import {
+	home,
+	about,
+	contact,
+	getBlogsList,
+	getBlog,
+	newBlog,
+	newBlogHandle,
+} from "../controllers/blog.js";
+
+import { upload } from "./utils/imageUpload.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	res.status(200).render("home", { data });
-});
+// Regular routes
+router.get("/", home);
+router.get("/about", about);
+router.get("/contact", contact);
 
-router.get("/about", (req, res) => {
-	res.status(200).render("about");
-});
+// Routes to display blogs
+router.get("/travels", getBlogsList);
+router.get("/travels/:id", getBlog);
 
-router.get("/contact", (req, res) => {
-	res.status(200).render("contact");
-});
-
-router.get("/travels", (req, res) => {
-	res.status(200).render("travels", { data });
-});
-
-router.get("/travels/:id", (req, res) => {
-	const id = req.params.id;
-	const post = data.find((post) => post.id === parseInt(id));
-	res.status(200).render("post", { post });
-});
+// Routes to create a blog
+router.get("/create", newBlog);
+router.post("/create", upload.single("image"), newBlogHandle);
 
 export default router;

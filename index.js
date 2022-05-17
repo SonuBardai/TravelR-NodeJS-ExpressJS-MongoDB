@@ -32,7 +32,7 @@ app.use(function logger(req, res, next) {
 app.use(express.static("static"));
 app.use(expressLayouts);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ limit: "10mb", extended: false }));
 
 // Routes
 app.use("/", blog_routes);

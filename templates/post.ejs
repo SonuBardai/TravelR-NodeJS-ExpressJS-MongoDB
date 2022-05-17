@@ -3,7 +3,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 
     body {
-        background-image: url('<%= post.image %>');
+        background-image: url('<%= "/blog-images/" + post.image %>');
         background-attachment: fixed;
         background-position: center;
         background-size: cover;
@@ -20,7 +20,7 @@
     .stamp {
         width: 18rem;
         position: absolute;
-        transform: translate(190%, -140%);
+        transform: translate(180%, -180%);
         opacity: 0.65;
         -webkit-filter: invert(100%);
         filter: progid:DXImageTransform.Microsoft.BasicImage(invert='1');
@@ -45,7 +45,6 @@
     }
 
     .title {
-        /* font-size: 1.7rem; */
         font-family: 'Koulen', cursive;
         font-weight: 800;
         color: white;
@@ -53,7 +52,7 @@
 
     .content {
         font-size: 1.1rem;
-        color: rgb(180, 180, 180);
+        color: rgb(234, 234, 234);
         font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         font-weight: 600;
         margin: 20px 0px;
@@ -65,7 +64,7 @@
         color: rgb(236, 238, 154);
     }
 </style>
-1
+
 <div>
     <div class="container position-relative my-8 px-4 px-lg-5">
         <div class="post">
@@ -73,7 +72,7 @@
                 <%= post.title %>
             </h1>
             <hr>
-            <img src="assets/post.png" class="stamp">
+            <img src="/assets/post.png" class="stamp">
             <a href='travels/<%= post.id %>'>
             </a>
             <div class="content">
@@ -81,8 +80,12 @@
             </div>
             <div class="author">Post by:
                 <a href="/" class="author-link">
-                    <%= post.author %>
+                    <%= post.author.username %>
                 </a>
+            </div>
+            <div>
+                <%= post.datePosted.getDate() + '-' + (post.datePosted.getMonth()+1) + '-' +
+                    post.datePosted.getFullYear() + ' ' + post.datePosted.getHours()+':'+post.datePosted.getMinutes() %>
             </div>
             <hr>
         </div>

@@ -2,26 +2,24 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
 	title: {
-		typeof: mongoose.SchemaTypes.String,
-		required: true,
+		type: mongoose.SchemaTypes.String,
+		required: true
 	},
 	content: {
-		typeof: mongoose.SchemaTypes.String,
-		required: true,
+		type: mongoose.SchemaTypes.String,
+		required: true
 	},
 	datePosted: {
-		typeof: mongoose.SchemaTypes.Date,
-		required: true,
-		default: new Date().getDate(),
+		type: mongoose.SchemaTypes.Date,
+		default: Date.now,
 	},
 	author: {
-		type: new mongoose.Schema.Types.ObjectId(),
+		type: mongoose.Schema.Types.ObjectId,
 		ref: "User",
-		required: true,
+		required: true
 	},
 	image: {
 		type: mongoose.SchemaTypes.String,
-		required: true,
 	},
 });
 

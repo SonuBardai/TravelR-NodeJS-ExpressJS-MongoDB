@@ -68,7 +68,8 @@
         <% for(i=0; i<data.length; i++) { %>
             <a href="/travels/<%= data[i].id %>">
                 <div class="card my-4" style="width: 18rem;">
-                    <div class="card-images" style="background-image: url('<%= data[i].image %>')"></div>
+                    <div class="card-images" style="background-image: url('<%= `blog-images/` + data[i].image %>')">
+                    </div>
                     <div class="card-body">
                         <h5 class="title">
                             <%= data[i].title %>
@@ -77,7 +78,7 @@
                             <%= data[i].content.slice(0, 150)+'...' %>
                         </p>
                         <p class="author">
-                            Post by: <%= data[i].author %>
+                            Post by: <%= data[i].author.username %>
                         </p>
                     </div>
                 </div>
