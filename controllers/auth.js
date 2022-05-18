@@ -2,10 +2,19 @@ import User from "../models/user.js";
 import bcrypt from "bcrypt";
 
 export const getRegisterPage = (req, res) => {
-	return res.status(200).render("register");
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+	return res.status(200).render("register", { authenticated });
 };
 
 export const registerUser = async (req, res) => {
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+
 	let { username, email, password1, password2 } = req.body;
 
 	if (!username || !email || !password1 || !password2) {
@@ -54,15 +63,24 @@ export const registerUser = async (req, res) => {
 };
 
 export const getLoginPage = (req, res) => {
-	return res.status(200).render("login");
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+
+	return res.status(200).render("login", { authenticated });
 };
 
 export const loginUser = (req, res) => {
 	const { username, password } = req.body;
 	if (!username || !password) {
-		req.flash("error", "Please enter valid credentials.");
 		res.status(302).redirect("/users/login");
 		return;
 	}
-	
+};
+
+export const logoutUser = (req, res) => {
+	req.logout();
+	req.flash("info", "You have been logged out.");
+	res.redirect("/");
 };

@@ -1,37 +1,85 @@
 import Post from "../models/post.js";
 
+import User from "../models/user.js";
+import { Contact } from "../models/contactQuery.js";
+import { isAuthenticated } from "./strategies/utils.js";
+
 export const home = async (req, res) => {
-	const data = await Post.find({}).sort({ datePosted: "desc" }).limit(3);
-	res.status(200).render("home", { data });
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+	const data = await Post.find({})
+		.sort({ datePosted: "desc" })
+		.limit(3)
+		.populate("author");
+	res.status(200).render("home", { data, authenticated });
 };
 
 export const about = (req, res) => {
-	res.status(200).render("about");
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+	res.status(200).render("about", { authenticated });
 };
 
 export const contact = (req, res) => {
-	res.status(200).render("contact");
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+	res.status(200).render("contact", { authenticated });
+};
+
+export const contactSubmit = async (req, res) => {
+	const message = req.body.message;
+	console.log(req.body);
+	try {
+		const query = new Contact({
+			user: req.user.id,
+			message,
+		});
+		await query.save();
+		req.flash("Query Submitted");
+		res.redirect("/");
+	} catch (err) {
+		req.flash("Failed to Submit query.", err);
+		res.redirect("/error");
+	}
 };
 
 export const getBlogsList = async (req, res) => {
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+
 	const data = await Post.find({})
 		.populate("author")
 		.sort({ datePosted: "desc" });
-	res.status(200).render("travels", { data });
+	res.status(200).render("travels", { data, authenticated });
 };
 
 export const getBlog = async (req, res) => {
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
+
 	const id = req.params.id;
 	const post = await Post.findById(id).populate("author");
-	console.log("POST: ", post);
-	res.status(200).render("post", { post });
+	res.status(200).render("post", { post, authenticated });
 };
 
 export const newBlog = (req, res) => {
-	res.status(200).render("post_form");
-};
+	let authenticated = false;
+	if (req.user) {
+		authenticated = true;
+	}
 
-import User from "../models/user.js";
+	res.status(200).render("post_form", { authenticated });
+};
 
 export const newBlogHandle = async (req, res) => {
 	const { title, content } = req.body;
@@ -43,7 +91,7 @@ export const newBlogHandle = async (req, res) => {
 	const post = new Post({
 		title: req.body.title,
 		content: req.body.content,
-		author: "6283029e12e23f819109a9aa",
+		author: req.user.id,
 		image: req.file.filename,
 	});
 

@@ -15,8 +15,14 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/travels">travels</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">Contact</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">About</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/register">Register</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/Login">Login</a></li>
+                <% if(authenticated){ %>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/create">Post</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/logout">Logout</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                href="/users/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/login">Login</a></li>
+                        <% } %>
             </ul>
         </div>
     </div>
