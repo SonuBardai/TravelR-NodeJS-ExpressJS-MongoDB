@@ -1,8 +1,9 @@
 # TravelR
-- A public travelling journal website.
+
+-   A travelling journal app.
 
 ## Tech Stack:
 
-- HTML, CSS, JS
-- NodeJS, ExpressJS
-- MongoDB
+-   HTML (EJS, Bootstrap), CSS, JS
+-   NodeJS, ExpressJS
+-   MongoDB

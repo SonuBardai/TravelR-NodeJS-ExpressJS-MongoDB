@@ -1,4 +1,5 @@
 TODO.txt
 node_modules
-static/blog-images/
+static/blog-images/*.jpg
+static/blog-images/*.jpeg
 .env
